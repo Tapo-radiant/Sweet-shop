@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Solhustle monochrome scale ─────────────────────────────── */
+  --color-ink-950: #060606; /* deepest recess      */
+  --color-ink-900: #0a0a0a; /* page background     */
+  --color-ink-850: #101010; /* section band        */
+  --color-ink-800: #151515; /* card                */
+  --color-ink-700: #1e1e1e; /* raised card / hover */
+  --color-ink-600: #2a2a2a; /* borders             */
+  --color-ink-500: #3a3a3a; /* strong borders      */
+  --color-ink-400: #565656; /* muted icons         */
+  --color-ink-300: #8a8a8a; /* secondary text      */
+  --color-ink-200: #b5b3ad; /* body text (warm)    */
+  --color-paper: #f2f1ed; /* primary text (warm) */
+
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-900 text-ink-200 font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #f2f1ed;
+  color: #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+@layer components {
+  /* ── typography ─────────────────────────────────────────── */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.25em] text-ink-300;
+  }
+
+  /* ── surfaces ───────────────────────────────────────────── */
+  .card {
+    @apply rounded-lg border border-ink-600 bg-ink-800;
+  }
+
+  .card-raised {
+    @apply rounded-lg border border-ink-600 bg-ink-700;
+  }
+
+  .hairline {
+    @apply border-ink-600;
+  }
+
+  /* ── buttons ────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-paper px-5 py-2.5
+      font-sans text-sm font-semibold text-ink-900 transition-colors
+      hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-ink-500
+      bg-transparent px-5 py-2.5 font-sans text-sm font-medium text-paper
+      transition-colors hover:border-ink-300 hover:bg-ink-800
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5
+      font-sans text-xs font-medium text-ink-300 transition-colors
+      hover:bg-ink-700 hover:text-paper;
+  }
+
+  /* ── monochrome status pills ────────────────────────────── */
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5
+      font-mono text-[10px] uppercase tracking-[0.15em];
+  }
+  .pill-solid {
+    @apply border-paper bg-paper text-ink-900;
+  }
+  .pill-outline {
+    @apply border-ink-400 bg-transparent text-ink-200;
+  }
+  .pill-dim {
+    @apply border-ink-600 bg-transparent text-ink-400;
+  }
+  .pill-invert {
+    @apply border-transparent bg-ink-500 text-paper line-through decoration-1;
+  }
+
+  /* ── forms ──────────────────────────────────────────────── */
+  .field-label {
+    @apply mb-1.5 block font-mono text-[11px] uppercase tracking-[0.2em] text-ink-300;
+  }
+
+  .field {
+    @apply w-full rounded-md border border-ink-600 bg-ink-900 px-3.5 py-2.5 text-sm
+      text-paper placeholder:text-ink-400 transition-colors
+      focus:border-ink-300 focus:outline-none;
+  }
+
+  /* ── misc ───────────────────────────────────────────────── */
+  .mono-xs {
+    @apply font-mono text-xs text-ink-300;
+  }
+
+  .link-underline {
+    @apply text-paper underline decoration-ink-500 underline-offset-4 transition-colors hover:decoration-paper;
+  }
+}
