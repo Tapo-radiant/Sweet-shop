@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengal Bekary</title>
+    <meta name="description" content="Discover handcrafted luxury chocolates, macarons, cupcakes and traditional Indian sweets at Bengal Bekary. Order online for delivery.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <i class="fa-solid fa-cookie-bite logo-icon" style="color: var(--color-gold);"></i>
+                <div>
+                    <h1>Bengal Bekary</h1>
+                </div>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#categories">Menu</a>
+                <a href="#delivery">Delivery</a>
+                <a href="#about">Our Story</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartToggle">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <a href="#categories" class="btn order-now-btn">Order Now</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Menu Sidebar ────────────────────────────────────────── -->
+    <div class="menu-sidebar-overlay" id="menuSidebarOverlay"></div>
+    <aside class="menu-sidebar" id="menuSidebar" aria-label="Menu">
+
+        <!-- Header -->
+        <div class="msb-header">
+            <div class="msb-profile-avatar" id="msbAvatar">G</div>
+            <div class="msb-profile-info">
+                <p class="msb-name" id="msbName">Guest User</p>
+                <p class="msb-email" id="msbEmail">Sign in to view your account</p>
+            </div>
+            <button class="msb-close" id="menuSidebarClose" title="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="msb-stats">
+            <div class="msb-stat">
+                <span class="msb-stat-num" id="statOrders">0</span>
+                <span class="msb-stat-label">Orders</span>
+            </div>
+            <div class="msb-stat">
+                <span class="msb-stat-num" id="statWishlist">0</span>
+                <span class="msb-stat-label">Wishlist</span>
+            </div>
+            <div class="msb-stat">
+                <span class="msb-stat-num" id="statPoints">250</span>
+                <span class="msb-stat-label">Points</span>
+            </div>
+        </div>
+
+        <!-- Nav Links (mobile) -->
+        <div class="msb-section-label">Navigate</div>
+        <nav class="msb-nav">
+            <a href="#home"       class="msb-nav-link" onclick="closeSidebar()"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#categories" class="msb-nav-link" onclick="closeSidebar()"><i class="fa-solid fa-border-all"></i> Menu</a>
+            <a href="#delivery"   class="msb-nav-link" onclick="closeSidebar()"><i class="fa-solid fa-truck-fast"></i> Delivery</a>
+            <a href="#about"      class="msb-nav-link" onclick="closeSidebar()"><i class="fa-solid fa-book-open"></i> Our Story</a>
+            <a href="#contact"    class="msb-nav-link" onclick="closeSidebar()"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </nav>
+
+        <!-- Account Section -->
+        <div class="msb-section-label">My Account</div>
+        <ul class="msb-menu">
+            <li><button class="msb-item" id="msbProfile">
+                <span class="msb-item-icon" style="background:rgba(200,149,108,0.15);color:var(--color-gold)"><i class="fa-solid fa-user"></i></span>
+                <span class="msb-item-text"><strong>My Profile</strong><small>Edit personal details</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbOrders">
+                <span class="msb-item-icon" style="background:rgba(201,72,91,0.12);color:var(--color-rose)"><i class="fa-solid fa-bag-shopping"></i></span>
+                <span class="msb-item-text"><strong>My Orders</strong><small>Track &amp; view history</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbWishlist">
+                <span class="msb-item-icon" style="background:rgba(232,160,191,0.2);color:#d63384"><i class="fa-solid fa-heart"></i></span>
+                <span class="msb-item-text"><strong>Wishlist</strong><small>Saved favourites</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbAddresses">
+                <span class="msb-item-icon" style="background:rgba(76,175,80,0.12);color:var(--color-green-dark)"><i class="fa-solid fa-location-dot"></i></span>
+                <span class="msb-item-text"><strong>Saved Addresses</strong><small>Manage delivery locations</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbRewards">
+                <span class="msb-item-icon" style="background:rgba(200,149,108,0.15);color:var(--color-gold-dark)"><i class="fa-solid fa-award"></i></span>
+                <span class="msb-item-text"><strong>Loyalty Rewards</strong><small>250 sweet points</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbNotifications">
+                <span class="msb-item-icon" style="background:rgba(62,39,35,0.08);color:var(--color-chocolate-light)"><i class="fa-solid fa-bell"></i></span>
+                <span class="msb-item-text"><strong>Notifications</strong><small>Order updates &amp; offers</small></span>
+                <span class="msb-badge" id="msbNotifBadge">3</span>
+            </button></li>
+        </ul>
+
+        <!-- Preferences Section -->
+        <div class="msb-section-label">Preferences</div>
+        <ul class="msb-menu">
+            <li><button class="msb-item" id="msbSettings">
+                <span class="msb-item-icon" style="background:rgba(62,39,35,0.08);color:var(--color-gray)"><i class="fa-solid fa-gear"></i></span>
+                <span class="msb-item-text"><strong>Settings</strong><small>App &amp; account preferences</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+            <li><button class="msb-item" id="msbHelp">
+                <span class="msb-item-icon" style="background:rgba(62,39,35,0.08);color:var(--color-gray)"><i class="fa-solid fa-circle-question"></i></span>
+                <span class="msb-item-text"><strong>Help &amp; Support</strong><small>FAQs &amp; customer care</small></span>
+                <i class="fa-solid fa-chevron-right msb-arrow"></i>
+            </button></li>
+        </ul>
+
+        <!-- Footer -->
+        <div class="msb-footer">
+            <button class="msb-signin-btn" id="msbSignIn">
+                <i class="fa-solid fa-right-to-bracket"></i> Sign In / Register
+            </button>
+            <p class="msb-footer-note">© 2026 Bengal Bekary</p>
+        </div>
+
+    </aside>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="images/hero-banner.jpg" alt="Bengal Bekary shop interior with beautiful display of sweets">
+        </div>
+        
+        <!-- Floating Elements -->
+        <i class="fa-solid fa-star floating-sweet" style="color: var(--color-gold);"></i>
+        <i class="fa-solid fa-cookie floating-sweet" style="color: var(--color-gold-light);"></i>
+        <i class="fa-solid fa-ice-cream floating-sweet" style="color: var(--color-pink);"></i>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-crown"></i> Bengal Bekary
+                </div>
+                <h2>Experience the <span class="highlight">Sweetness</span> of Luxury</h2>
+                <p>Indulge in our handcrafted chocolates, delicate macarons, and traditional mithai. Every bite is a celebration of flavor, crafted with love and the finest ingredients.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#categories" class="btn btn-primary">Explore Menu</a>
+                    <a href="#about" class="btn btn-secondary">Discover Our Story</a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <span>100% Natural<br>Ingredients</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                        <span>Same Day<br>Delivery</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+                        <span>Elegant<br>Packaging</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories reveal" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <span class="script-text">Discover</span>
+                <h2>Our Collections</h2>
+                <div class="divider"></div>
+                <p>From rich Belgian chocolates to authentic Indian sweets, explore our wide range of sweets for every occasion.</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-filter="all">
+                    <div class="cat-img"><img src="images/hero-banner.jpg" alt="All Sweets"></div>
+                    <h3>All Sweets</h3>
+                    <p>View complete menu</p>
+                </div>
+                <div class="category-card" data-filter="chocolates">
+                    <div class="cat-img"><img src="images/chocolates.jpg" alt="Chocolates"></div>
+                    <h3>Chocolates</h3>
+                    <p>Artisan & Belgian</p>
+                </div>
+                <div class="category-card" data-filter="macarons">
+                    <div class="cat-img"><img src="images/macarons.jpg" alt="Macarons"></div>
+                    <h3>Macarons</h3>
+                    <p>Classic French</p>
+                </div>
+                <div class="category-card" data-filter="cupcakes">
+                    <div class="cat-img"><img src="images/cupcakes.jpg" alt="Cupcakes"></div>
+                    <h3>Cupcakes</h3>
+                    <p>Freshly baked</p>
+                </div>
+                <div class="category-card" data-filter="indian-sweets">
+                    <div class="cat-img"><img src="images/indian-sweets.jpg" alt="Indian Sweets"></div>
+                    <h3>Indian Sweets</h3>
+                    <p>Traditional mithai</p>
+                </div>
+                <div class="category-card" data-filter="cakes">
+                    <div class="cat-img"><img src="images/cakes.jpg" alt="Cakes"></div>
+                    <h3>Cakes</h3>
+                    <p>Celebration & Custom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Reveal Panel (hidden until a category card is clicked) -->
+    <div class="collection-panel" id="collectionPanel">
+        <div class="container">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <span class="script-text" id="panelScript">Explore</span>
+                    <h2 id="panelHeading">All Sweets</h2>
+                    <div class="divider"></div>
+                </div>
+                <button class="panel-close-btn" id="panelCloseBtn" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="products-grid" id="panelProductsGrid">
+                <!-- Injected by JS on category click -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivery Section -->
+    <section class="delivery reveal" id="delivery">
+        <div class="container">
+            <div class="delivery-wrapper">
+                <div class="delivery-content">
+                    <span class="script-text">Seamless Service</span>
+                    <h2>Online Order & Delivery</h2>
+                    <p>Enjoy our sweets from the comfort of your home. We ensure that every order is handled with care, elegantly packaged, and delivered fresh to your doorstep.</p>
+                    
+                    <div class="delivery-steps">
+                        <div class="delivery-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Browse & Select</h4>
+                                <p>Choose your favorites from our exquisite online menu and add them to your cart.</p>
+                            </div>
+                        </div>
+                        <div class="delivery-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Secure Checkout</h4>
+                                <p>Provide your delivery details and choose a payment method through our secure gateway.</p>
+                            </div>
+                        </div>
+                        <div class="delivery-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Fresh Delivery</h4>
+                                <p>Our specialized delivery partners ensure your sweets arrive fresh and in perfect condition.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="delivery-visual">
+                    <div class="delivery-card-grid">
+                        <div class="delivery-info-card featured">
+                            <div class="card-icon">🏍️</div>
+                            <h4>Same Day Delivery</h4>
+                            <p>Available for orders placed before 2 PM in select city zones.</p>
+                        </div>
+                        <div class="delivery-info-card">
+                            <div class="card-icon">🎁</div>
+                            <h4>Gift Wrapping</h4>
+                            <p>Complimentary luxury packaging with personalized notes.</p>
+                        </div>
+                        <div class="delivery-info-card">
+                            <div class="card-icon">🕒</div>
+                            <h4>Scheduled Delivery</h4>
+                            <p>Pick a specific date and time slot for your special occasions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about reveal bg-cream" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-images">
+                    <div class="about-img-main">
+                        <img src="images/macarons.jpg" alt="Chef preparing macarons">
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="images/indian-sweets.jpg" alt="Traditional sweets preparation">
+                    </div>
+                    <div class="about-experience">
+                        <div class="number">25+</div>
+                        <div class="text">Years of<br>Excellence</div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <span class="script-text">Our Story</span>
+                    <h2>A Legacy of Taste & Tradition</h2>
+                    <p>Founded in 1999, Bengal Bekary began as a small family-run patisserie with a simple dream: to bring moments of joy through extraordinary sweets. Today, we blend classic European techniques with rich Indian traditions to create unique culinary masterpieces.</p>
+                    <p>Every chocolate, macaron, and mithai is crafted by our master artisans using only the finest ethically sourced ingredients. We believe that a sweet is not just food—it's an experience, a memory, a celebration.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50k+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">120+</div>
+                            <div class="stat-label">Sweet Varieties</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Awards Won</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-outline">Visit Our Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials reveal">
+        <div class="container">
+            <div class="section-title">
+                <span class="script-text">Sweet Words</span>
+                <h2>What Our Customers Say</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">The Belgian chocolates were absolutely divine! I ordered a box for my parents' anniversary, and the elegant packaging plus the melt-in-the-mouth taste made their day. Delivery was perfectly on time.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Sarah Jenkins</h4>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Their Indian sweets are the most authentic I've found in the city. The Kaju Barfi tastes exactly like the ones back home. Highly recommend their online delivery—it's fast and reliable!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Amit Patel</h4>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">I ordered custom cupcakes for a corporate event and they were a massive hit. The frosting designs were beautiful and the flavors were rich without being overly sweet. Amazing service!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">E</div>
+                        <div class="author-info">
+                            <h4>Elena Rodriguez</h4>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section class="contact reveal" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div>
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Have a question about a custom order or need help with online delivery? Our team is here to help make your day sweeter.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-location-dot" style="color:var(--color-gold)"></i></div>
+                                <div>
+                                    <h4>Our Boutique</h4>
+                                    <p>128 Heritage Avenue, Culinary District<br>New York, NY 10012</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-phone" style="color:var(--color-gold)"></i></div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+1 (555) 123-4567<br>Mon-Sat, 9AM to 8PM</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-envelope" style="color:var(--color-gold)"></i></div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>hello@bengalbekary.com<br>orders@bengalbekary.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" required>
+                                <option value="" disabled selected>Select an inquiry type</option>
+                                <option value="delivery">Online Delivery Issue</option>
+                                <option value="custom">Custom Cake/Order</option>
+                                <option value="bulk">Bulk/Corporate Gifting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required placeholder="How can we help you today?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Bengal Bekary</h3>
+                    <p>Crafting sweets and unforgettable moments since 1999. Bringing joy to your celebrations.</p>
+                </div>
+                
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Our Menu</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="document.querySelector('[data-filter=\'chocolates\']').click(); return false;">Belgian Chocolates</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-filter=\'macarons\']').click(); return false;">French Macarons</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-filter=\'cupcakes\']').click(); return false;">Gourmet Cupcakes</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-filter=\'indian-sweets\']').click(); return false;">Indian Sweets</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-filter=\'cakes\']').click(); return false;">Custom Cakes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Newsletter</h4>
+                    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Subscribe to get special offers and updates on new sweet collections.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bengal Bekary. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping" style="color:var(--color-gold)"></i> Your Cart</h3>
+            <button class="cart-close" id="cartClose"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Populated by JS -->
+            <div class="cart-empty">
+                <i class="fa-solid fa-basket-shopping empty-icon"></i>
+                <p>Your sweet cart is currently empty.</p>
+                <button class="btn btn-primary" style="margin-top: 1rem;" onclick="document.getElementById('cartClose').click(); document.getElementById('categories').scrollIntoView();">Browse Sweets</button>
+            </div>
+        </div>
+        
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-summary">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">₹0.00</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span>Delivery (calculated at checkout)</span>
+                    <span>-</span>
+                </div>
+                <div class="cart-summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">₹0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Complete Your Order</h3>
+                <button class="modal-close" id="closeCheckout"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-steps" id="checkoutSteps">
+                    <div class="checkout-step active" data-step="1">
+                        <div class="step-dot">1</div>
+                        <span>Delivery</span>
+                    </div>
+                    <div class="checkout-step" data-step="2">
+                        <div class="step-dot">2</div>
+                        <span>Payment</span>
+                    </div>
+                    <div class="checkout-step" data-step="3">
+                        <div class="step-dot">3</div>
+                        <span>Confirm</span>
+                    </div>
+                </div>
+                
+                <form id="checkoutForm" class="checkout-panel active" data-step="1" novalidate>
+                    <h4 style="margin-bottom: 1rem; font-family: var(--font-heading);">Delivery Details</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="coFirstName">First Name</label>
+                            <input type="text" id="coFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="coLastName">Last Name</label>
+                            <input type="text" id="coLastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="coAddress">Delivery Address</label>
+                        <textarea rows="2" id="coAddress" name="address" required placeholder="Full address including apartment/suite"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="coPhone">Phone Number</label>
+                            <input type="tel" id="coPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="coDate">Delivery Date</label>
+                            <input type="date" id="coDate" name="deliveryDate" required>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin: 1.5rem 0 1rem; font-family: var(--font-heading);">Delivery Method</h4>
+                    <div class="delivery-option">
+                        <label>
+                            <input type="radio" name="deliveryMethod" value="standard" checked>
+                            <div>
+                                <span style="display:block; font-weight:600;">Standard Delivery</span>
+                                <span style="font-size:0.75rem; color:var(--color-gray);">2-3 business days - ₹99</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <label>
+                            <input type="radio" name="deliveryMethod" value="express">
+                            <div>
+                                <span style="display:block; font-weight:600;">Express Same Day</span>
+                                <span style="font-size:0.75rem; color:var(--color-gray);">Order before 2PM - ₹199</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">Continue to Payment <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+
+                <!-- Step 2: Payment method -->
+                <form id="paymentForm" class="checkout-panel" data-step="2" novalidate>
+                    <h4 style="margin-bottom: 1rem; font-family: var(--font-heading);">Payment Method</h4>
+
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="cod" checked>
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>Cash on Delivery</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="upi">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>UPI</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="card">
+                            <i class="fa-regular fa-credit-card"></i>
+                            <span>Credit / Debit Card</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="paypal">
+                            <i class="fa-brands fa-paypal"></i>
+                            <span>PayPal</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="paymentMethod" value="netbanking">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Net Banking</span>
+                        </label>
+                    </div>
+
+                    <div class="payment-fields" data-for="cod">
+                        <p class="payment-note"><i class="fa-solid fa-circle-info"></i> Pay in cash when your order is delivered. Please keep exact change ready.</p>
+                    </div>
+
+                    <div class="payment-fields" data-for="upi" hidden>
+                        <label class="payment-subheading">Choose your UPI app</label>
+                        <div class="pay-options" id="upiApps" role="radiogroup" aria-label="UPI app" tabindex="-1"></div>
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="payUpiId">UPI ID</label>
+                            <input type="text" id="payUpiId" name="upiId" placeholder="yourname@bank" autocomplete="off">
+                        </div>
+                        <p class="payment-note" id="upiHint"><i class="fa-solid fa-circle-info"></i> Pick your app, then enter the UPI ID linked to it.</p>
+                    </div>
+
+                    <div class="payment-fields" data-for="card" hidden>
+                        <label class="payment-subheading">Select your card's bank</label>
+                        <div class="pay-options" id="cardBanks" role="radiogroup" aria-label="Card issuing bank" tabindex="-1"></div>
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="payCardNumber">Card Number</label>
+                            <input type="text" id="payCardNumber" name="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-group">
+                            <label for="payCardName">Name on Card</label>
+                            <input type="text" id="payCardName" name="cardName" autocomplete="cc-name" placeholder="As printed on the card">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="payCardExpiry">Expiry (MM/YY)</label>
+                                <input type="text" id="payCardExpiry" name="cardExpiry" autocomplete="cc-exp" placeholder="08/28">
+                            </div>
+                            <div class="form-group">
+                                <label for="payCardCvv">CVV</label>
+                                <input type="password" id="payCardCvv" name="cardCvv" inputmode="numeric" maxlength="4" placeholder="123">
+                            </div>
+                        </div>
+                        <p class="payment-note"><i class="fa-solid fa-lock"></i> Demo checkout — card details are never sent or stored.
+                            <span class="card-networks" aria-label="Cards accepted">
+                                <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                                <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                                <i class="fa-brands fa-cc-amex" title="American Express"></i>
+                                <i class="fa-brands fa-cc-diners-club" title="Diners Club"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="payment-fields" data-for="paypal" hidden>
+                        <div class="form-group">
+                            <label for="payPaypalEmail">PayPal Email</label>
+                            <input type="email" id="payPaypalEmail" name="paypalEmail" placeholder="you@example.com">
+                        </div>
+                        <p class="payment-note">You will be redirected to PayPal to approve the payment.</p>
+                    </div>
+
+                    <div class="payment-fields" data-for="netbanking" hidden>
+                        <div class="form-group">
+                            <label for="payBank">Select Bank</label>
+                            <select id="payBank" name="bank">
+                                <option value="">Choose your bank</option>
+                                <option>State Bank of India</option>
+                                <option>HDFC Bank</option>
+                                <option>ICICI Bank</option>
+                                <option>Axis Bank</option>
+                                <option>Punjab National Bank</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkout-nav">
+                        <button type="button" class="btn btn-outline" id="paymentBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn btn-primary">Review Order <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </form>
+
+                <!-- Step 3: Confirm -->
+                <div id="confirmPanel" class="checkout-panel" data-step="3">
+                    <h4 style="margin-bottom: 1rem; font-family: var(--font-heading);">Confirm Your Order</h4>
+
+                    <div class="coupon-block">
+                        <label for="couponInput"><i class="fa-solid fa-ticket"></i> Have a coupon code?</label>
+                        <div class="coupon-row">
+                            <input type="text" id="couponInput" placeholder="Enter coupon code" autocomplete="off">
+                            <button type="button" class="btn btn-outline" id="couponApplyBtn">Apply</button>
+                        </div>
+                        <div class="coupon-chips" id="couponChips"></div>
+                        <p class="coupon-msg" id="couponMsg" role="status"></p>
+                    </div>
+
+                    <div id="orderSummary" class="order-summary"></div>
+                    <div class="checkout-nav">
+                        <button type="button" class="btn btn-outline" id="confirmBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button type="button" class="btn btn-primary" id="placeOrderBtn"><i class="fa-solid fa-lock"></i> Place Order</button>
+                    </div>
+                </div>
+                
+                <div id="orderSuccess" style="display:none;" class="order-success">
+                    <i class="fa-solid fa-circle-check success-icon" style="color:var(--color-green)"></i>
+                    <h3>Order Confirmed!</h3>
+                    <p>Thank you for choosing Bengal Bekary. Your sweet treats are being prepared.</p>
+                    <div class="order-id">Order ID: #BBK<span id="randomOrderId">8294</span></div>
+                    <p class="order-paid-with" id="orderPaidWith"></p>
+                    
+                    <div class="tracking-info">
+                        <h4>Order Status</h4>
+                        <div class="tracking-steps">
+                            <div class="tracking-step active">
+                                <div class="tracking-dot"></div>
+                                <span>Order Received</span>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="tracking-dot"></div>
+                                <span>Preparing (Kitchen)</span>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="tracking-dot"></div>
+                                <span>Out for Delivery</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline" style="width:100%; margin-top:1.5rem;" id="closeSuccessBtn">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account View Modal (Profile / Orders / Wishlist / Addresses / Rewards / Notifications / Settings / Help) -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal account-modal">
+            <div class="modal-header">
+                <h3 id="accountModalTitle">Account</h3>
+                <button class="modal-close" id="closeAccountModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="accountModalBody">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <a href="#" class="scroll-top" id="scrollTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+  <!-- App JS -->
+  <script src="js/app.js?v=7"></script>
+</body>
+</html>
